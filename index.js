@@ -23,27 +23,82 @@ mogoDB.setUpConnectionHandlers(() => {
 mogoDB.connect();
 
 app.get('/Glasses/:id', (req, res) => {
-    console.log('get it');
+    const id = req.params.id;
+    Glasses.findById(id)
+    .then((glasses) =>{
+        if(glasses == null){
+            res.status(404).json({message: "Glasses not found"});
+            return;
+        }
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message: "Something went wrong"});
+    });
 });
 
 app.get('/Glasses', (req, res) => {
-    console.log('gets all');
+    Glasses.find()
+    .then((glasses) => {
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message: "Something went wrong"});
+    });
 });
 
-app.post('/Glasses/:id',(req,res) => {
-    console.log("adds it");
+app.post('/Glasses',(req,res) => {
+    Glasses.create(req.body)
+    .then((glasses)=>{
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message:"Something went wrong"});
+    });
 });
 
 app.put('/Glasses/:id', (req,res) => {
-    console.log("changes it");
+    const id = req.params.id;
+    Glasses.findByIdAndUpdate(id, req.body, {returnDocument: 'after'})
+    .then((glasses)=>{
+        if (glasses == null){
+            res.status(404).json({message: "Glasses not found"});
+            return;
+        }
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message:"Something went wrong"});
+    });
 });
 
 app.patch('/Glasses/:id',(req, res) => {
-    console.log("adjusts it");
+    const id = req.params.id;
+    Glasses.findByIdAndUpdate(id, req.body, {returnDocument: 'after'})
+    .then((glasses)=>{
+        if (glasses == null){
+            res.status(404).json({message: "Glasses not found"});
+            return;
+        }
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message: "Something went wrong"});
+    });
 });
 
 app.delete('/Glasses/:id',(req, res) => {
-    console.log("removes it");
+    const id = req.params.id;
+    Glasses.findByIdAndDelete(id)
+    .then((glasses)=>{
+        if (glasses == null){
+            res.status(404).json({message: "Glasses not found"});
+            return;
+        }
+        res.json(glasses);
+    })
+    .catch((err) =>{
+        res.status(500).json({message: "Something went wrong"});
+    });
 });
-
 
