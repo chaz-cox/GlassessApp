@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 
 function connect(user , password, host, port, db){
-    const connectionString = ``;
+    const connectionString = `mongodb+srv://chaz-cox:chaz-cox@cluster0.s04ylrn.mongodb.net/?retryWrites=true&w=majority`;
 
     mongoose.connect(connectionString,{
         useNewUrlParser: true,
-        useUnifinedTopology: true,
+        useUnifiedTopology: true,
     });
 }
 
@@ -29,6 +29,6 @@ function setUpConnectionHandlers(callback){
 
 module.exports={
     connect: connect,
-    setUpConnectionHandlers: setUpConnectionHanders,
+    setUpConnectionHandlers: setUpConnectionHandlers,
 };
 

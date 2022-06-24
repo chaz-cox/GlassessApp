@@ -22,27 +22,27 @@ mogoDB.setUpConnectionHandlers(() => {
 });
 mogoDB.connect();
 
-app.get('/pairGlasses/:id', (req, res) => {
+app.get('/Glasses/:id', (req, res) => {
     console.log('get it');
 });
 
-app.get('/pairsGlasses', (req, res) => {
+app.get('/Glasses', (req, res) => {
     console.log('gets all');
 });
 
-app.post('/pairGlasses/:id',(req,res) => {
+app.post('/Glasses/:id',(req,res) => {
     console.log("adds it");
 });
 
-app.put('/pairGlasses/:id', (req,res) => {
+app.put('/Glasses/:id', (req,res) => {
     console.log("changes it");
 });
 
-app.patch('/pairGlasses/:id',(req, res) => {
+app.patch('/Glasses/:id',(req, res) => {
     console.log("adjusts it");
 });
 
-app.delete('/pairGlasses/:id',(req, res) => {
+app.delete('/Glasses/:id',(req, res) => {
     console.log("removes it");
 });
 
